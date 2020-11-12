@@ -1,0 +1,11 @@
+django
+urllib3
+attrs
+gunicorn
+django-countries
+django-nested-admin
+django-grappelli
+requests
+django-cors-headers
+djangorestframework
+django-environ
