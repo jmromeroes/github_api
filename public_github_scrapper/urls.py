@@ -1,7 +1,6 @@
 from django.urls import path
-from .views.users import UserAPI
-from .views.repos import PublicRepositoriesAPI, PublicRepositoriesByUserAPI, PublicBranchesByRepositoryAPI
-from .views.sns_handlers import HandleSectionCompletedNotification, HandleLearningStartedNotification
+from .views.users_views import UserAPI
+from .views.repos_views import PublicRepositoriesAPI, PublicRepositoriesByUserAPI, PublicBranchesByRepositoryAPI
 
 urlpatterns = [
     # Users Views

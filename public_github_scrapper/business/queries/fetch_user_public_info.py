@@ -1,14 +1,13 @@
-import public_github_scrapper.business.user_information.UserInformation
-import requests
+from typing import Dict
 
-class FetchUserPublicInfo:
+from public_github_scrapper.business.domain.user_information import UserInformation
+from .github_query import GitHubQuery
+
+class FetchUserPublicInfo(GitHubQuery):
     def execute(self, username: str) -> UserInformation:
-        
-        if not cohort:
-            return None
-        return self._build_cohort_dto(cohort)
+        return self.get("users/{}".format(username))
 
-    def _build_user_dto(self, user: Dict) -> UserInformation:
+    def _build_dto(self, user: Dict) -> UserInformation:
         return UserInformation(
             user["login"],
             user["url"]
