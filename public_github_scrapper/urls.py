@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.users_views import UserAPI
-from .views.repos_views import PublicRepositoriesAPI, PublicRepositoriesByUserAPI, PublicBranchesByRepositoryAPI
+from .views.repos_views import PublicRepositoriesAPI, PublicRepositoriesByUserAPI
 
 urlpatterns = [
     # Users Views
@@ -9,36 +9,16 @@ urlpatterns = [
         UserAPI.as_view(),
         name="user_information"
     ),
-    path(
-        "users/<username>/followers",
-        UserAPI.as_view(),
-        name="user_followers_information"
-    ),
-    path(
-        "users/<username>/following",
-        UserAPI.as_view(),
-        name="user_following_information"
-    ),
-
+    
     #Repositories Views
     path(
-        "repos",
-        PublicRepositoriesAPI,
+        "repositories",
+        PublicRepositoriesAPI.as_view(),
         name="repositories"
     ),
     path(
-        "repos/<username>",
+        "users/<username>/repositories",
         PublicRepositoriesByUserAPI.as_view(),
         name="repositories_by_username"
-    ),
-    path(
-        "repos/<username>/<repository>/branches",
-        PublicBranchesByRepositoryAPI.as_view(),
-        name="repository_branch"
-    ),
-    path(
-        "repos/<owner>/<repository>/contributors",
-        PublicBranchesByRepositoryAPI.as_view(),
-        name="repository_branch"
     )
 ]
