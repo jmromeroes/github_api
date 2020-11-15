@@ -5,7 +5,6 @@ from .repos_models import Repository
 class GithubUser(models.Model):
     login = models.CharField(max_length=150)
     url = models.CharField(max_length=150)
-    id = models.CharField(max_length=150)
     node_id = models.CharField(max_length=150)
     avatar_url = models.CharField(max_length=150)
     gravatar_id = models.CharField(max_length=150)

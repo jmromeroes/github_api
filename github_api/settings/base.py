@@ -39,7 +39,7 @@ BASE_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'public_github_scrapper'
+    'public_github_scrapper',
 ]
 
 MIDDLEWARE = [

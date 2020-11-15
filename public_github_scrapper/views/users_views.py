@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from ..business.queries.api.users.fetch_user_public_info import FetchUserPublicInfo
+from ..business.use_cases.scrape_user_by_username import ScrapeUserByUsername
 
 import json
 
@@ -14,14 +14,8 @@ class UserAPI(APIView):
 
     def get(self, request, username):
         try:
-            user_query_result =  FetchUserPublicInfo().execute(username)
-            print(user_query_result)
-            return Response(json.dumps(user_query_result.to_dict()))
-        except NotFoundQueryException:
-            return Response(
-                {"error": "Username was not found in Github API"},
-                status.HTTP_404_NOT_FOUND
-            )
+            user_query_result =  ScrapeUserByUsername(username).execute()
+            return Response({})
         except Exception as e:
             print(e)
             return Response(

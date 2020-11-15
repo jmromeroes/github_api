@@ -1,4 +1,4 @@
-from public_github_scrapper.business.queries.api.repos.fetch_public_repos import FetchPublicRepositories
+from public_github_scrapper.business.queries.api.repos.fetch_repos_by_username import FetchRepositoriesByUsername
 from public_github_scrapper.business.commands.base import CommandBase, CommandError, CommandResult
 
 from public_github_scrapper.business.commands.db.save_repositories import SaveRepositories
@@ -9,10 +9,11 @@ import logging
 _logger = logging.getLogger(__name__)
 
 @attr.s(auto_attribs=True)
-class ScrapePublicRepositories(CommandBase):
+class ScrapeRepositoriesByUsername(CommandBase):
+    username: str
     def execute(self):
         try:
-            repositories = FetchPublicRepositories().execute()
+            repositories = FetchRepositoriesByUsername().execute(self.username)
 
             SaveRepositories(repositories).execute()
 

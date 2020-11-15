@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from public_github_scrapper.business.queries.api.repos.fetch_public_repos import FetchPublicRepositories
-from public_github_scrapper.business.queries.api.repos.fetch_repos_by_username import FetchRepositoriesByUsername
+from public_github_scrapper.business.use_cases.scrape_public_repositories import ScrapePublicRepositories
+from public_github_scrapper.business.use_cases.scrape_user_repositories import ScrapeRepositoriesByUsername
+
 
 from public_github_scrapper.business.queries.exceptions import NotFoundQueryException, BadRequestQueryException, InternalServerException
 
@@ -15,9 +16,9 @@ class PublicRepositoriesByUserAPI(APIView):
 
     def get(self, request, username):
         try:
-            query_result =  FetchRepositoriesByUsername().execute(username)
+            query_result = ScrapeRepositoriesByUsername(username).execute()
 
-            return Response(json.dumps(list(map(lambda q: q.to_dict(), query_result))))
+            return Response({})
         except NotFoundQueryException:
             return Response(
                 {"error": "Repositories for username were not found in Github API"},
@@ -35,9 +36,9 @@ class PublicRepositoriesAPI(APIView):
 
     def get(self, request):
         try:
-            query_result = FetchPublicRepositories().execute()
+            query_result = ScrapePublicRepositories().execute()
 
-            return Response(json.dumps(list(map(lambda q: q.to_dict(), query_result))))
+            return Response({})
         except Exception as e:
             print(e)
             return Response(
