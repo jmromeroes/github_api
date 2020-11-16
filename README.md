@@ -66,7 +66,7 @@ For user information:
 GET http://localhost:8000/github/public/users/<username>/
 
 For public repositories information:
-GET http://localhost:8000/github/public/repositories/
+GET http://localhost:8000/github/public/repositories
 
 For public repositories by username information:
 GET http://localhost:8000/github/public/users/<username>/repositories
