@@ -63,7 +63,7 @@ Navigate to `http://localhost:8000/admin` and join with the credentials you set
 To query the information from the database there are 3 urls:
 
 For user information:
-GET http://localhost:8000/github/public/users/<username>/
+GET http://localhost:8000/github/public/users/<username>
 
 For public repositories information:
 GET http://localhost:8000/github/public/repositories
