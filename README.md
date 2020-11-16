@@ -55,7 +55,7 @@ Now to consult the database you can create an admin user with the `createsuperus
 
 Fill all required information and then run the project
 ```sh
-(env)$  DJANGO_SETTINGS_MODULE="github_api.settings.dev" python manage.py createsuperuser
+(env)$  DJANGO_SETTINGS_MODULE="github_api.settings.dev" python manage.py runserver
 ```
 
 Navigate to `http://localhost:8000/admin` and join with the credentials you set
