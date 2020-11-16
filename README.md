@@ -10,7 +10,7 @@ $ git clone https://github.com/jmromeroes/github_api.git
 $ cd github_api
 ```
 
-Create a virtual environment to install dependencies in and activate it:
+Create a [virtual environment](https://virtualenv.pypa.io/en/latest/) to install dependencies in and activate it:
 
 ```sh
 $ virtualenv env
