@@ -9,7 +9,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         try:
             username = options['username']
-            query_result = ScrapeRepositoriesByUsername(username).execute()
+            query_result = ScrapeUserByUsername(username).execute()
 
             self.stdout.write(self.style.SUCCESS('Successfully scrapped repositories'))
             

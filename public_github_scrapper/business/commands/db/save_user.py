@@ -4,9 +4,7 @@ import attr, cattr
 
 from ..base import CommandBase, CommandError, CommandResult
 from public_github_scrapper.business.domain.users.user_information import UserInformation
-from public_github_scrapper.models.user_models import GithubUser
-from django.core import serializers
-
+from public_github_scrapper.business.persistence.db.users_persistence import GithubUserPersistence
 
 @attr.s(auto_attribs=True)
 class SaveUser(CommandBase):
@@ -14,10 +12,8 @@ class SaveUser(CommandBase):
 
     def execute(self) -> CommandResult:
         try:
-            user_dict = self.user.to_dict()
+            GithubUserPersistence.save_user_information(self.user)
 
-            if not GithubUser.objects.filter(node_id=user_dict["node_id"]).exists():
-                return GithubUser.objects.create(**user_dict)
-                
+            return CommandResult(is_success=True)
         except Exception as e:
             raise CommandError(e)

@@ -3,7 +3,6 @@ from ..base import BaseValueObject
 
 @attr.s(auto_attribs=True, frozen=True)
 class RepositoryInformation(BaseValueObject):
-    id: str
     node_id: str
     name: str
     full_name: str

@@ -5,7 +5,6 @@ from ..base import BaseValueObject
 class UserInformation(BaseValueObject):
     login: str
     url: str
-    id: str
     node_id: str
     avatar_url: str
     gravatar_id: str

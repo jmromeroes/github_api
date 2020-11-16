@@ -1,5 +1,7 @@
 from django.db import models
 
+from .user_models import GithubUser
+
 class Repository(models.Model):
     node_id = models.CharField(max_length=150)
     name = models.CharField(max_length=150)
@@ -46,3 +48,5 @@ class Repository(models.Model):
     teams_url = models.CharField(max_length=150)
     trees_url = models.CharField(max_length=150)
     hooks_url = models.CharField(max_length=150)
+
+    owner = models.ForeignKey(GithubUser, on_delete=models.SET_NULL, null=True, blank=True)

@@ -17,6 +17,8 @@ class ScrapePublicRepositories(CommandBase):
             SaveRepositories(repositories).execute()
 
             _logger.info("Succesfully ran use case {}".format(type(self)))
+            
+            return CommandResult(is_success=True)
         except Exception as e:
             msg = "Error running use case {}".format(
                 type(self)
